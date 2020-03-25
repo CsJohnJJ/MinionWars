@@ -1,7 +1,5 @@
 import React from 'react';
 import "./splash.css";
-import SplashCard from './card';
-import Footer from '../footer/footer';
 import Character from './pngwave.png';
 import { Link } from 'react-router-dom';
 
@@ -13,37 +11,48 @@ class Splash extends React.Component {
 
     render(){
       return (
-        <div className="splash-page">
-          <section id="shop">
-            <div className="content">
-              <h2>Choose your Minion</h2>
-              <div className="images">
-                <div className="monster-background">
-                  <img className="monster" src={Character} alt=""></img>
-                </div>
-                <div className="monster-background">
-                  <img className="monster" src={Character} alt=""></img>
-                </div>
-                <div className="monster-background">
-                  <img className="monster" src={Character} alt=""></img>
-                </div>
-              </div>
+        <div>
+          <section id="top-section">
+            <div id="top-section-title">
+              <h2>Welcome to Minion Wars</h2>
             </div>
+            <div className="cards-container">
+              <ul className="cards">
+                <li id="item-1" className="single-card-container">
+                  <img
+                    className="monster"
+                    src="https://i.imgur.com/lBC7PWk.png"
+                    alt=""
+                  ></img>
+                </li>
+                <li id="item-2" className="single-card-container">
+                  <img className="monster" src={Character} alt=""></img>
+                </li>
+                <li id="item-3" className="single-card-container">
+                  <img
+                    className="monster"
+                    src="https://i.imgur.com/XVNQ98E.png"
+                    alt=""
+                  ></img>
+                </li>
+              </ul>
+            </div>
+            <p class="goto-next scrolly">
+              Scroll to Learn More
+            </p>
           </section>
 
-          <section id="contact">
-            <div className="content">
-              <div className="content-container">
-                <h2>Let the Battle begin</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  sodales nulla in posuere tempus. Fusce malesuada odio vitae
-                  imperdiet molestie. Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit. Sed sodales nulla in posuere tempus. Fusce
-                  malesuada odio vitae imperdiet molestie.
-                </p>
-                <Link to="./learn">Learn more</Link>
-              </div>
+          <section id="bottom-section">
+            <div id="welcome-page-information">
+              <h2>Let The Battle Begin</h2>
+              <br></br>
+              <p>
+                They were called Minions. Creatures of many sizes, shapes,
+                origins: followers of your command. Once a myth of the past. Now
+                they are in your hands.
+              </p>
+              <br></br>
+              <Link to="./learn">Learn more</Link>
             </div>
           </section>
         </div>

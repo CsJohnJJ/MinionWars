@@ -1,6 +1,12 @@
 import React from "react";
 import troll from "./cardimage/troll.png";
 import dragon from "./cardimage/dragon1.png";
+import rare from '../../app/cards/rare.png'
+import legendary from '../../app/cards/legendary.png'
+import common from '../../app/cards/common.png'
+import epic from "../../app/cards/epic.png";
+
+
 
 class SingleCard extends React.Component {
   constructor(props) {
@@ -9,6 +15,7 @@ class SingleCard extends React.Component {
       active: false
     };
     this.flipCard = this.flipCard.bind(this);
+    this.rarity = this.rarity.bind(this)
   }
 
   flipCard() {
@@ -16,48 +23,75 @@ class SingleCard extends React.Component {
     this.setState({ active: !currentState });
   }
 
+  rarity(minion){
+    switch (minion.rarity) {
+      case "Common":
+        return <img className="card" src={common}></img>;
+        break;
+      case "Rare":
+        return <img className="card" src={rare}></img>;
+        break;
+      case "Legendary":
+        return <img className="card" src={legendary}></img>;
+        break;
+      case "Epic":
+        return <img className="card" src={epic}></img>;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  minionName(minion){
+     switch (minion.rarity) {
+       case "Common":
+         return <li className="commonName minionName">{minion.name}</li>;
+         break;
+       case "Rare":
+         return <li className="rareName minionName">{minion.name}</li>;
+         break;
+       case "Legendary":
+         return <li className="legendaryName minionName">{minion.name}</li>;
+         break;
+       case "Epic":
+         return <li className="epicName minionName">{minion.name}</li>;
+         break;
+       default:
+         break;
+     }
+  }
+
   render() {
     const minion = this.props.minion;
     return (
       <>
-        <div
-          class={this.state.active ? "card is-flipped" : "card"}
-          onClick={this.flipCard}
-        >
-          <div class="card__face card__face--front">
-            <div className="info"></div>
-            <div className="show-top">
-              <h3 className="name">{minion.name}</h3>
+        <div id="container" class="col-lg-3">
+          <div class="img-container">
+            <div className={minion.rarity === 'Epic' ? 'epic-positioning':'image-positioning'}>
+              <img src={minion.url}></img>
             </div>
-
-            <div className="show-bottom">
-              <h3 className={minion.rarity + "-" + "tag"}>{minion.rarity}</h3>
-              {/* <h4 className="gold">{minion.price}</h4> */}
+            <div className="positioning">
+              <ul className={minion.rarity === 'Epic' ? 'epic-text-color':null}>
+                {this.minionName(minion)}
+                <li>
+                  HP:{minion.hp}
+                  <i className="fas fa-briefcase-medical"></i>
+                </li>
+                <li>
+                  Defense:{minion.defense}
+                  <i class="fas fa-shield-alt"></i>
+                </li>
+                <li>
+                  Attack:{minion.attack}
+                  <i class="fas fa-bolt"></i>
+                </li>
+                <li>Ability:{minion.ability}</li>
+              </ul>
             </div>
-            <div className={minion.rarity + "-" + "background"}>
-              <div className="info"></div>
-              <div className="show-top">
-              {minion.url === "tempurl" ? null : <img src={minion.url}></img>}
-                <h3 className="name">{minion.name}</h3>
-              </div>
-
-              <div className="show-bottom">
-                <h3 className={minion.rarity + "-" + "tag"}>{minion.rarity}</h3>
-                {/* <h4 className="gold">{minion.price}</h4> */}
-              </div>
-            </div>
+            {this.rarity(minion)}
           </div>
-          <div class="card__face card__face--back">
-            <ul className="abilities">
-              <li>
-                HP:{minion.hp}
-                <i class="fa fas fa-briefcase-medical"></i>
-              </li>
-              <li>{minion.attack}</li>
-              <li>{minion.defense}</li>
-              <li>{minion.ability}</li>
-            </ul>
-          </div>
+          
         </div>
       </>
     );

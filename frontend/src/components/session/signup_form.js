@@ -8,22 +8,13 @@ class SignupForm extends React.Component {
     this.state = {
       username: "",
       password: "",
-      password2: "",
-      errors: {}
+      password2: ""
     };
     
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.signedIn === true) {
-  //     this.props.history.push("/signup");
-  //   }
-
-  //   this.setState({ errors: nextProps.errors });
-  // }
 
   update(field) {
     return e =>
@@ -34,16 +25,12 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let user = {
-      username: this.state.username,
-      password: this.state.password,
-      password2: this.state.password2
-    };
+    let user = this.state;
     
     this.props.signup(user);
+    // this.props.signup(user)
+    // .then(() => this.props.login(user))
   }
-
-  
   
   handleDemo(e) {
    e.preventDefault();
@@ -52,19 +39,25 @@ class SignupForm extends React.Component {
    this.props.closeModal();
  };
  
-  
-
   renderErrors() {
     return (
       <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        {Object.values(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
   }
 
   render() {
+
+    if (this.props.signedIn){
+      this.props.clearErrors();
+      this.props.login(this.state);
+      this.props.history.push('/minions');
+      this.props.closeModal();
+    }
+
     return (
       <div className="signupForm">
         <h3 className="signupTitle">Signup</h3>
@@ -98,12 +91,15 @@ class SignupForm extends React.Component {
               <br />
               <input type="submit" value="Submit" className="submitButton" />
               {this.renderErrors()}
+              <div className="loginLink" onClick={() => {
+                this.props.clearErrors();
+                this.props.loginForm();
+                }}>
+                Already a member? Log in!
+                </div> 
                <button className="demoLogin" onClick={this.handleDemo}>
                 Demo Login
                 </button> 
-              <div className="loginLink" onClick={this.props.loginForm}>
-                Already a member? Log in!
-                </div> 
             </div>
           </div>
         </form>

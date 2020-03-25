@@ -1,66 +1,109 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./nav.css";
-import Logo from '../../../src/app/assets/logo.png'
-import Coin from '../../../src/app/assets/coin.png'
-
+import Logo from "../../../src/app/assets/logo.png";
 
 class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.changeClass = this.changeClass.bind(this);
+
+    this.state = {
+      hidden: true
+    };
   }
 
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
-    this.props.history.push('/');
+    this.props.history.push("/");
+  }
+
+  changeClass() {
+    const currentState = this.state.hidden;
+
+    this.setState({ hidden: !currentState });
+  }
+
+  close() {
+    debugger
+    const newState = this.state.hidden;
+
+    this.setState({ hidden: !newState });
   }
 
   getLinks() {
     if (this.props.loggedIn) {
       return (
-         <div className="navItems">
-        <div className="logout" onClick={this.logoutUser}>
-          <a>Logout</a>
-        </div>
-        <div className="coins">
-           <img className='coin' src={Coin} /> 
-           <p className="money">1000</p>
-        </div>
-       </div >
+        <>
+          <li
+            className="userProfile"
+            onClick={() =>
+              this.props.history.push(`/users/${this.props.currentUser.id}`)
+            }
+          >
+            Profile
+          </li>
+          <li className="SessionButton" onClick={this.logoutUser}>
+            <a>Logout</a>
+          </li>
+        </>
       );
     } else {
       return (
-       
-        <div className="login" onClick={this.props.loginForm}>
+        <li className="SessionButton" onClick={this.props.loginForm}>
           <a>Login</a>
-        </div>
+        </li>
       );
+    }
+  }
+
+  showGetLinks() {
+    if (this.props.loggedIn) {
     }
   }
 
   render() {
     return (
-      <div className='background'>
-       <header>
-            <div className="logo">
-                <img className='logo' src={Logo}/>
-            </div>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/minions">Minions</Link></li>
-                <li>{this.getLinks()}</li>
-                <li>
-          
-                    <a href="#">
-                        <i className="fa fab fa-github"></i>
-                    </a>
-                </li>
-            </ul>
-        </header>
+      <header>
+        <div className="logo-container">
+          <img className="logo" src={Logo} />
         </div>
+        <ul className="nav">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/minions">Marketplace</Link>
+          </li>
+          {this.getLinks()}
+        </ul>
+        <div className="dropdown-container">
+          <i className="fas fa-bars hamburger">
+          <div className="dropdown">
+            <div className="dropdown-content">
+              <ul className="nav-dropdown">
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/minions">Marketplace</Link>
+                </li>
+                {this.getLinks()}
+              </ul>
+            </div>
+          </div>
+          </i>
+        </div>
+      </header>
     );
   }
 }

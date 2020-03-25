@@ -1,53 +1,51 @@
 .loginForm {
-  padding: 7px 20px;
-  width: 570px;
-  min-height: 614px;
-  border-radius: 18px;
-  background: url('../../app/assets/fire_sword.png') no-repeat center center/cover;
+  padding: 15px 20px;
+  width: 620px;
+  min-height: 720px;
+  background: url("../../app/assets/fire_sword.png") no-repeat center
+    center/cover;
 }
 
 .loginFields {
-
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 75%;
+  width: 45%;
+  position: relative;
+  top: 12em;
 }
-.loginFieldContainer{
-   display: flex;
+.loginFieldContainer {
+  display: flex;
   justify-content: center;
 }
 .usernameField {
-  background-color: antiquewhite;
-  height: 30px;
-   text-align: center;
-   font-weight: 700;
-   font-size: 16px;
-    font-family: Lucida Console;
-    color:gray;
-    border-radius: 8px;
+  background-color: #fffbd7;
+  height: 48px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: gray;
+  border-radius: 8px;
 }
 
 .passwordField {
-  background-color: antiquewhite;
+  background-color: #fffbd7;
   height: 30px;
   text-align: center;
   font-weight: 700;
   font-size: 16px;
-   font-family: Lucida Console;
-   color:gray;
-   border-radius: 8px;
+  color: gray;
+  border-radius: 8px;
 }
 
-.submitButton{ 
+.submitButton {
   font-weight: 700;
-  height: 30px;
-  background-image: linear-gradient(to bottom right, #3e1304, #da823e);
+  height: 0px;
+  background-image: linear-gradient(to bottom right, #3b0000, #da823e);
   border-radius: 8px;
-    font-weight: 700;
+  font-weight: 700;
   font-size: 16px;
-   font-family: Lucida Console;
-   
+  color: #fff5a0;
 }
 
 .submitButton:hover {
@@ -56,19 +54,18 @@
   cursor: pointer;
 }
 
-.loginTitle{ 
+.loginTitle {
   color: #da823e;
   font-size: 26px;
-  font-family: Blippo, fantasy;
   text-align: center;
+  display: none;
 }
-.signupLink{ 
-  position: relative;
-  top: 90%;
-  color: #852806;
+.signupLink {
+  font-family: Lucida Console;
+  color: #fff5a0;
   font-size: 22px;
-  font-family: Blippo, fantasy;
   cursor: pointer;
+  text-align: center;
 }
 
 .signupLink:hover {

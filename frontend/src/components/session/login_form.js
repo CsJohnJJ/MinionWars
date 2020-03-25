@@ -5,24 +5,15 @@ import "./login_form.css";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       username: "",
-      password: "",
-      errors: {}
+      password: ""
     };
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.currentUser === true) {
-  //     this.props.history.push("/");
-  //   }
-
-  //   this.setState({ errors: nextProps.errors });
-  // }
 
   update(field) {
     return e =>
@@ -38,8 +29,7 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
     this.props.login(user);
-    this.props.closeModal();
-    this.props.history.push('/minions');
+    
   }
 
   handleDemo(e) {
@@ -49,17 +39,23 @@ class LoginForm extends React.Component {
     this.props.closeModal();
   }
 
+
   renderErrors() {
     return (
       <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        {Object.values(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
   }
 
   render() {
+    if (this.props.loggedIn) {
+      this.props.clearErrors();
+      this.props.history.push("/minions");
+      this.props.closeModal();
+    }
     return (
       <div>
         <form className="loginForm" onSubmit={this.handleSubmit}>
@@ -84,7 +80,10 @@ class LoginForm extends React.Component {
               <br />
               <input type="submit" value="Submit" className="submitButton" />
               {this.renderErrors()}
-              <div className="signupLink" onClick={this.props.signupForm}>
+              <div className="signupLink" onClick={() => {
+                this.props.clearErrors(); 
+                this.props.signupForm();
+                }}>
                 Need an account? Sign up!
               </div>
               <button className="demoLogin" onClick={this.handleDemo}>

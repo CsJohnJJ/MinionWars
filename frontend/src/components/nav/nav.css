@@ -1,105 +1,207 @@
-.fa {
-  color: gold;
-}
 
-.logo {
-  /* background: url('../../app/assets/logo.png')   no-repeat center center/cover; */
-  width: 28em;
-  height: 4em;
-  background: transparent;
-  box-shadow: none;
-  margin-left: 10px;
-}
-
-.background {
-  /* background: url('../../app/assets/dragon.jpg')   */
-  background-color: #211510;
-  position: relative;
-  /* opacity: .88; 
-    filter: alpha(opacity=20); */
-}
 
 header {
   width: 100%;
-  height: 130px;
+  height: 8em;
+  background-color: #211510;
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  /* position: fixed; */
-  z-index: 30;
-  box-shadow: 0 0 10px #000;
-
-  /* background-blend-mode: lighten; */
+  justify-content: space-between;
 }
 
-/* header:after{
-    background: rgba(0, 0, 0, 0.6);
-     position: absolute;
-    top: 0;
-    left: 0;
-    width: inherit;
-    height: 100%;
-    z-index: 0;
-} */
+.logo-container{
+  width: 40%;
+  height: auto;
+  padding: 2em;
+}
+.logo {
+  max-width: 100%;
+  height: auto !important;
+}
 
-header ul {
-  flex: 2 1;
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 50em;
-  margin-right: 2em;
+
+.fab {
+  color: gold;
+  font-size: 40px;
+  cursor: pointer;
+  transform: translate(75px);
 }
-header ul li {
-  list-style: none;
+
+.fab:hover {
+  color: orange;
+   transition: color 0.25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
 }
+
 header ul li a {
   text-decoration: none;
   color: gold;
-  font-size: 1.5em;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 5px 15px;
-  font-family: Blippo, fantasy;
   cursor: pointer;
 }
-header ul li a:hover {
-  border-bottom: 2px solid #fdcb88;
+
+header .menu {
+  font-size: 2.5em;
+  display: none;
 }
 header .menu {
   font-size: 2.5em;
   display: none;
 }
-header .menu{
-    font-size: 2.5em;
+
+.fa-github { 
+  margin-top: 12px;
+}
+.dots {
+   color: #ddb905;
+   font-size: 36px;
+   cursor: pointer;
+}
+
+
+.dropdown-content {
+  background-image: linear-gradient(to bottom left, #620000, brown);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 6, 0.8);
+  border-radius: 8px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  font-size: 10px;
+  padding: 20px;
+  z-index: 100;
+
+}
+
+.dropdown{
+  display: none;
+}
+
+.hamburger:hover .dropdown{
+  display: block;
+}
+
+.dropdown-content a:hover {
+ cursor: pointer;
+  color: orange;
+}
+.dropdown-content {
+  display: block;
+}
+
+
+.hamburger{
+  color: gold;
+  font-size: 1.5rem;
+  margin-right: 1em;
+
+}
+
+.dropdown-container{
+  height: 3em;
+}
+
+.SessionButton:hover a {
+  cursor: pointer;
+  color: orange;
+  transition: color 0.25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  
+}
+
+
+
+.userProfile {
+  color: gold;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+}
+.userProfile:hover {
+  color: orange;
+   transition: color 0.25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+
+
+.SessionButton {
+  color: gold;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+  margin-right: 15px;
+}
+
+.userProfile {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+/* .userProfile:hover {
+  font-size: 10px;
+} */
+
+
+
+
+.dropdown-container {
+  display: none;
+}
+
+.nav{
+  display: flex;
+}
+
+.nav a{
+  color: gold;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.nav a:hover{
+  color: orange;
+   transition: color 0.25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.nav-items{
+  display: flex;
+}
+
+.nav-dropdown li{
+  margin-top: 10px;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  header {
+    width: 100%;
+    height: auto;
+    background-size: 100% auto !important;
+  }
+
+  .dropdown-container{
+    display: block;
+    height: 1.5em;
+  }
+  .nav{
     display: none;
+  }
+
+  .nav li{
+    text-align: center;
+  }
+
+  .SessionButton{
+    margin-right: 0;
+  }
+  .userProfile{
+    margin-right: 0;
+  }
 }
-
-.coins {
-    margin:0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-
-}
-.money { 
-    margin-top: 50px;
-     transform: translate(-100px);
-     color: gold;
-     font-family: Blippo, fantasy;
-     font-weight: 800;
-     font-size: 18px;
-
-}
-
-.coin {
-
-    height: 100px;
-    width: 100px;
-   box-shadow: none;
-   position: relative;
-   right: 96%;
-
-}
-
-
-

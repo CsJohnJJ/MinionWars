@@ -11,7 +11,14 @@ const passport = require("passport");
 // http://localhost:5000/api/users/...
 
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+router.get("/", (req, res) => {
+  User.find()
+    .sort({ date: -1 })
+    .then(users => res.json(users))
+    .catch(err => res.status(404).json({ nousersfound: "No users found" }));
+});
+
+
 
 router.get(
   "/current",
@@ -109,12 +116,17 @@ router.post("/login", (req, res) => {
   });
 });
 
-// router.get("/:user_id", (req, res) => {
-//   Minion.find({ user: req.params.user_id })
-//     .then(minions => res.json(minions))
-//     .catch(err =>
-//       res.status(404).json({ nominionsfound: "No minions found from that user" })
-//     );
-// });
+router.patch("/:user_id", (req, res) => {
+   
+  User.updateOne({_id: req.params.user_id }, { $set: { coins: req.body.coins }})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      next(err);
+  });
+});
+
 
 module.exports = router;

@@ -1,36 +1,70 @@
-
-
 .scroll {
-    min-width: 600px;
-    min-height: 675px;
-    background-image: url('../../app/assets/scroll.png');
-
-
+  width: 60%;
+  min-height: 900px;
+  text-align: center;
 }
 
-.congrats { 
-    color: black;
-    font-style: Trattatello, fantasy;
-    font-size: 24px;
-    font-weight: 700;
-    transform: translate(85px, 100px)
+.scroll-image {
+  max-width: 1000px;
+  min-height: 800px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(43%, -50%);
+}
 
+.congrats {
+  width: 90%;
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+  transform: translate(35%, 15vw);
 }
 
 .BuyAlert {
-     transform: translate(70px, -42px);
-  font-weight: 500;
+  transform: translate(75px, -50px);
   height: 30px;
   background-image: linear-gradient(to bottom left, #c22a0cfd, brown);
   border-radius: 12px;
   font-weight: 700;
   font-size: 16px;
-   font-family: Lucida Console;
-   color: #ffbe33;
+  color: #ffbe33;
 }
 
 .BuyAlert:hover {
   color: #fbe148;
   transition: color 0.25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
   cursor: pointer;
+}
+
+.brokeMan {
+  position: relative;
+  top: 12vw;
+  right: 3vw;
+}
+
+.notEnoughHeader {
+  color: black;
+  font-size: 38px;
+  font-weight: 900;
+  position: relative;
+  top: 11vw;
+  left: 2vw;
+}
+
+.handShake{
+  position: relative;
+  top: 16vw;
+  right: 3vw;
+  max-width: 500px;
+  max-height: 400px;
+}
+
+.deal {
+  color: black;
+  font-size: 38px;
+  font-weight: 900;
+  position: relative;
+  top: 11vw;
+  left: 4vw;
 }
